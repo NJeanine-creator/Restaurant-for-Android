@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="saveRestaurantButton" type="id" />
+    <item name="websiteTextView" type="id" />
+    <item name="phoneTextView" type="id" />
+    <item name="addressTextView" type="id" />
+    <item name="cuisineTextView" type="id" />
+</resources>
