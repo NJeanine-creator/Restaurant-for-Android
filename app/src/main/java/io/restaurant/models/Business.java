@@ -60,13 +60,11 @@ public class Business {
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Business() {
     }
 
     /**
-     * 
      * @param distance
      * @param rating
      * @param coordinates

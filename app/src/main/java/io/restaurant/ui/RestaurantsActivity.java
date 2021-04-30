@@ -1,7 +1,9 @@
 package io.restaurant.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -15,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.restaurant.Constant;
 import io.restaurant.R;
 import io.restaurant.adapters.RestaurantListAdapter;
 import io.restaurant.models.Business;
@@ -26,6 +29,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+
+    private String mRecentAddress;
     private static final String TAG = RestaurantsActivity.class.getSimpleName();
     private RestaurantListAdapter mAdapter;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -40,6 +46,10 @@ public class RestaurantsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constant.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Pref Location", mRecentAddress);
+
         String location = intent.getStringExtra("location");
 
         YelpApi client = YelpClient.getClient();
